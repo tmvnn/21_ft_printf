@@ -25,11 +25,25 @@
 typedef struct		s_pf
 {
 	int				i;
-	int				height;
-	int				color;
+	int				num_of_c;
+	va_list			argptr;
+	char			*out;
 }					t_pf;
 
+/*
+** ---------------------------- Main Functions ------------------------------
+*/
+
 int				ft_printf(const char * restrict format, ...);
+
+/*
+** ----------------------------- libft Functions -------------------------------
+*/
+
 char			*ft_strchr(const char *s, int c);
+char			*ft_strnew(size_t size);
+void			*ft_memalloc(size_t size);
+char			*ft_itoa(int n);
+size_t			ft_strlen(const char *str);
 
 #endif

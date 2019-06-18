@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 21:14:06 by lbellona          #+#    #+#             */
-/*   Updated: 2018/12/19 18:03:59 by lbellona         ###   ########.fr       */
+/*   Created: 2018/12/05 16:05:03 by lbellona          #+#    #+#             */
+/*   Updated: 2018/12/05 16:32:46 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
 #include "../includes/ft_printf.h"
 
-int		main()
+char		*ft_strnew(size_t size)
 {
-	//printf("%.2s", "Hello\n");
-	int d1=123, d2=12, d3=1543;
-	//printf ("%d\n%6d\n%d\n",d1,d2,d3);
-	printf("%d\nasdddsss%d\n", d1, d2);
-	//int l1 = -9223372;
-	ft_printf("%d\nasdddsss%d\n", d1, d2);
-	return (0);
+	return ((char *)ft_memalloc(size + 1));
 }
