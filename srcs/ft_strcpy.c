@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 21:14:06 by lbellona          #+#    #+#             */
-/*   Updated: 2018/12/19 18:03:59 by lbellona         ###   ########.fr       */
+/*   Created: 2018/11/29 22:52:50 by lbellona          #+#    #+#             */
+/*   Updated: 2018/11/29 22:53:52 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
 #include "../includes/ft_printf.h"
 
-int		main()
+char	*ft_strcpy(char *dest, const char *src)
 {
-	int nc = 0;
-	int d1=123, d2=12, d3=1543;
-	//printf ("%d\n%6d\n%d\n",d1,d2,d3);
-	nc = printf("%+16d\n", d1);
-	printf("nc = %d\n\n", nc);
-	nc = ft_printf("%+16d\n", d1);
-	printf("nc = %d\n", nc);
-	return (0);
+	int		i;
+
+	i = -1;
+	while (src[++i])
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }

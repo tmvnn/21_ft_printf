@@ -21,6 +21,19 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include <limits.h>
+
+typedef struct		s_pf_flags
+{
+	int				hash;//
+	int				zero;//
+	//int				neg;
+	int				minus;//
+	int				plus;//
+	int				space;//
+	//int				prec;
+	int				fwidth;
+}				t_pf_flags;
 
 typedef struct		s_pf
 {
@@ -28,6 +41,9 @@ typedef struct		s_pf
 	int				num_of_c;
 	va_list			argptr;
 	char			*out;
+	int				n_len;
+	t_pf_flags		flag;
+	int				is_neg;
 }					t_pf;
 
 /*
@@ -35,6 +51,10 @@ typedef struct		s_pf
 */
 
 int				ft_printf(const char * restrict format, ...);
+int				is_conversion(const char c);
+int				is_flag(const char c);
+int				is_valid(const char c);
+void			get_sign_info(t_pf *pf);
 
 /*
 ** ----------------------------- libft Functions -------------------------------
@@ -44,6 +64,10 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strnew(size_t size);
 void			*ft_memalloc(size_t size);
 char			*ft_itoa(int n);
+int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *str);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strcpy(char *dest, const char *src);
+char			*ft_strdup(const char *src);
 
 #endif

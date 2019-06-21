@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 21:14:06 by lbellona          #+#    #+#             */
-/*   Updated: 2018/12/19 18:03:59 by lbellona         ###   ########.fr       */
+/*   Created: 2018/11/23 19:03:43 by lbellona          #+#    #+#             */
+/*   Updated: 2018/12/01 17:14:27 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
 #include "../includes/ft_printf.h"
 
-int		main()
+char	*ft_strdup(const char *src)
 {
-	int nc = 0;
-	int d1=123, d2=12, d3=1543;
-	//printf ("%d\n%6d\n%d\n",d1,d2,d3);
-	nc = printf("%+16d\n", d1);
-	printf("nc = %d\n\n", nc);
-	nc = ft_printf("%+16d\n", d1);
-	printf("nc = %d\n", nc);
-	return (0);
+	char	*ret;
+	int		i;
+
+	if (!(ret = (char*)malloc(sizeof(char) * ft_strlen(src) + 1)))
+		return (NULL);
+	i = -1;
+	while (src[++i])
+		ret[i] = src[i];
+	ret[i] = '\0';
+	return (ret);
 }

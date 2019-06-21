@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pf_check_funcs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 21:14:06 by lbellona          #+#    #+#             */
-/*   Updated: 2018/12/19 18:03:59 by lbellona         ###   ########.fr       */
+/*   Created: 2018/12/01 19:20:25 by lbellona          #+#    #+#             */
+/*   Updated: 2018/12/02 20:14:21 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-//#include <string.h>
 #include "../includes/ft_printf.h"
 
-int		main()
+int		is_conversion(const char c)
 {
-	int nc = 0;
-	int d1=123, d2=12, d3=1543;
-	//printf ("%d\n%6d\n%d\n",d1,d2,d3);
-	nc = printf("%+16d\n", d1);
-	printf("nc = %d\n\n", nc);
-	nc = ft_printf("%+16d\n", d1);
-	printf("nc = %d\n", nc);
-	return (0);
+	return (ft_strchr("dDioOuUxX%", c) != 0);
+}
+
+int		is_flag(const char c)
+{
+	return (ft_strchr("#0-+ 123456789", c) != 0);
+}
+
+int		is_valid(const char c)
+{
+	return (is_conversion(c) || is_flag(c));
+}
+
+void	get_sign_info(t_pf *pf)
+{
+	char *tmp;
+
+	if (pf->out[0] == '-')
+	{
+		pf->is_neg = 1;
+		tmp = ft_strdup(pf->out + 1);
+		free(pf->out);
+		pf->out = tmp;
+	}
+	pf->n_len = (int)ft_strlen(pf->out);
 }
