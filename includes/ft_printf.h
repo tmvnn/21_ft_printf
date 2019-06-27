@@ -43,6 +43,7 @@ typedef struct		s_pf
 	char			*out;
 	int				n_len;
 	t_pf_flags		flag;
+	int				prec;
 	int				is_neg;
 }					t_pf;
 
@@ -53,8 +54,18 @@ typedef struct		s_pf
 int				ft_printf(const char * restrict format, ...);
 int				is_conversion(const char c);
 int				is_flag(const char c);
+int				is_precision(const char c);
 int				is_valid(const char c);
-void			get_sign_info(t_pf *pf);
+void			init_flags(t_pf *pf);
+void			parse_flag(const char *str, t_pf *pf);
+void			parse_prec(const char *str, t_pf *pf);
+void			parse_spec(const char *str, t_pf *pf);
+void			s_percent(t_pf *pf);
+void			s_int(t_pf *pf);
+void 			get_sign_info(t_pf *pf);
+void			print_inum(t_pf *pf);
+void			print_width(t_pf *pf);
+void			print_sign(t_pf *pf);
 
 /*
 ** ----------------------------- libft Functions -------------------------------
@@ -69,5 +80,6 @@ size_t			ft_strlen(const char *str);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strdup(const char *src);
+void			*ft_memset(void *b, int c, size_t len);
 
 #endif

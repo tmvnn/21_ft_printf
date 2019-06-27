@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                    :+:      :+:    :+:   */
+/*   handle_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,42 +12,50 @@
 
 #include "../includes/ft_printf.h"
 
-void		parse_str(const char *str, t_pf *pf)
+void		handle_int_prec(t_pf *pf)
 {
-	pf->i++;
-	if (is_valid(str[pf->i])) //!
-	{
-		parse_flag(str, pf);
-		parse_spec(str, pf);
-
-	}
-}
-
-void		init_params(t_pf *pf)
-{
-	pf->i = -1;
-	pf->num_of_c = 0;
-}
-
-int			ft_printf(const char * restrict str, ...)
-{
-	va_list argptr;
 	int		i;
-	int		delt;
-	t_pf	pf;
+	char	*tmp;
+	char	*newstr;
 
-	va_start(pf.argptr, str);
-	init_params(&pf);
-	while (str[++pf.i])
+	if (pf->out[0] == '0' && pf->prec == 0)
+		pf->out[0] = '\0';
+	else if (pf->prec > pf->n_len)
 	{
-		if (str[pf.i] == '%')
-		{
-			delt = pf.i;
-			parse_str(str, &pf);
-		}
-		else if (str[pf.i])
-			pf.num_of_c += write(1, &str[pf.i], 1);
+		i = pf->prec - pf->n_len;
+		tmp = ft_strnew(i);
+		ft_memset(tmp, '0', i);
+		newstr = ft_strjoin(tmp, pf->out);
+		free(tmp);
+		free(pf->out);
+		pf->out = newstr;
+		pf->n_len += i;
 	}
-	va_end(pf.argptr);
-	return (pf.num_of_c);
+}
+
+void		s_int(t_pf *pf)
+{
+	int		num;
+
+	pf->flag.minus == 1 ? pf->flag.zero = 0 : 0;
+	num = va_arg(pf->argptr, int);
+	pf->out = ft_itoa(num);
+	get_sign_info(pf);
+	handle_int_prec(pf);
+	print_inum(pf);
+}
+
+void	get_sign_info(t_pf *pf)
+{
+	char *tmp;
+
+	if (pf->out[0] == '-')
+	{
+		pf->is_neg = 1;
+		pf->flag.plus = 0;
+		tmp = ft_strdup(pf->out + 1);
+		free(pf->out);
+		pf->out = tmp;
+	}
+	pf->n_len = (int)ft_strlen(pf->out);
 }

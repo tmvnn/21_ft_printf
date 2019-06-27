@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_check_funcs.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 19:20:25 by lbellona          #+#    #+#             */
-/*   Updated: 2018/12/02 20:14:21 by lbellona         ###   ########.fr       */
+/*   Created: 2018/11/29 21:09:14 by lbellona          #+#    #+#             */
+/*   Updated: 2018/11/29 22:44:12 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		is_conversion(const char c)
+void				*ft_memset(void *b, int c, size_t len)
 {
-	return (ft_strchr("dDioOuUxX%", c) != 0);
-}
+	unsigned char	*str;
 
-int		is_flag(const char c)
-{
-	return (ft_strchr("#0-+ 123456789", c) != 0);
-}
-
-int     is_precision(const char c)
-{
-	 return (ft_strchr(".", c) != 0);
-}
-
-int		is_valid(const char c)
-{
-	return (is_conversion(c) || is_flag(c) || is_precision(c));
+	str = (unsigned char *)b;
+	while (len)
+	{
+		*str++ = (unsigned char)c;
+		--len;
+	}
+	return (b);
 }

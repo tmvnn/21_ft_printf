@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 21:14:06 by lbellona          #+#    #+#             */
-/*   Updated: 2018/12/19 18:03:59 by lbellona         ###   ########.fr       */
+/*   Updated: 2019/06/27 01:12:06 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 int		main()
 {
 	int nc = 0;
-	int d1=123, d2=12, d3=1543;
+	int d1=-123, d2=12, d3=1543;
 	//printf ("%d\n%6d\n%d\n",d1,d2,d3);
-	nc = printf("%+16d\n", d1);
+	nc = printf("%.8d%%   %+.4d\n", d1, d2);
 	printf("nc = %d\n\n", nc);
-	nc = ft_printf("%+16d\n", d1);
+	nc = ft_printf("%.8d%%   %+.4d\n", d1, d2);
 	printf("nc = %d\n", nc);
 	return (0);
 }
