@@ -19,7 +19,7 @@ void		handle_int_prec(t_pf *pf)
 	char	*newstr;
 
 	if (pf->out[0] == '0' && pf->prec == 0)
-		pf->out[0] = '\0';
+		pf->out[0] = 0;
 	else if (pf->prec > pf->n_len)
 	{
 		i = pf->prec - pf->n_len;
@@ -30,6 +30,7 @@ void		handle_int_prec(t_pf *pf)
 		free(pf->out);
 		pf->out = newstr;
 		pf->n_len += i;
+		pf->flag.zero = 0;//
 	}
 }
 
@@ -53,6 +54,7 @@ void	get_sign_info(t_pf *pf)
 	{
 		pf->is_neg = 1;
 		pf->flag.plus = 0;
+		pf->flag.space = 0;
 		tmp = ft_strdup(pf->out + 1);
 		free(pf->out);
 		pf->out = tmp;

@@ -15,10 +15,17 @@
 void		s_percent(t_pf *pf)
 {
 	if (pf->flag.minus)
-	{} //
-	else //
-	{} //
-	pf->num_of_c += write(1, "%", 1);
+	{
+		pf->num_of_c += write(1, "%", 1);
+		while (pf->flag.fwidth-- > 1)
+			pf->num_of_c += write(1, " ", 1);
+	}
+	else
+	{
+		while (pf->flag.fwidth-- > 1)
+			pf->num_of_c += pf->flag.zero ? write(1, "0", 1) : write(1, " ", 1);
+		pf->num_of_c += write(1, "%", 1);
+	}
 }
 
 void		parse_spec(const char *str, t_pf *pf)

@@ -57,6 +57,7 @@ int				is_flag(const char c);
 int				is_precision(const char c);
 int				is_valid(const char c);
 void			init_flags(t_pf *pf);
+void			parse_str(const char *str, t_pf *pf);
 void			parse_flag(const char *str, t_pf *pf);
 void			parse_prec(const char *str, t_pf *pf);
 void			parse_spec(const char *str, t_pf *pf);

@@ -31,8 +31,6 @@ void		init_params(t_pf *pf)
 
 int			ft_printf(const char * restrict str, ...)
 {
-	va_list argptr;
-	int		i;
 	int		delt;
 	t_pf	pf;
 
