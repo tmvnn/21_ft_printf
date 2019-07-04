@@ -44,7 +44,7 @@ int			ft_printf(const char * restrict str, ...)
 		}
 		else
 		{
-			pf.buff[pf.ib++] = str[pf.i];
+			pf.buff[pf.ib++] = str[pf.i++];
 			//pf.num_of_c += write(1, &str[pf.i++], 1);
 		}
 	}
