@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                    :+:      :+:    :+:   */
+/*   handle_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbellona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,37 +12,25 @@
 
 #include "../includes/ft_printf.h"
 
-void		parse_str(const char *str, t_pf *pf)
+void		s_uint(t_pf *pf, char tp)
 {
+	long		num;
+
+	pf->flag.plus = 0;
+	pf->flag.space = 0;
+	num = va_arg(pf->argptr, long);
+	if (tp != 'U' && pf->mod == no_mod)
+		pf->out = ft_ultoa((unsigned int)num);
+	else if (tp == 'U' || tp == 'D' || pf->mod == l_mod || pf->mod == ll_mod
+				|| pf->mod == j_mod || pf->mod == z_mod || pf->mod == t_mod)
+		pf->out = ft_ultoa((unsigned long)num);
+	else if (pf->mod == h_mod)
+		pf->out = ft_ultoa((unsigned short)num);
+	else if (pf->mod == hh_mod)
+		pf->out = ft_ultoa((unsigned char)num);
+	get_sign_info(pf);
+	handle_int_prec(pf);
+	print_inum(pf);
+	free(pf->out);
 	pf->i++;
-	if (str[pf->i] && is_valid(str[pf->i])) //!
-	{
-		parse_flag_mod_prec(str, pf);
-		parse_spec(str, pf);
-	}
-}
-
-void		init_params(t_pf *pf)
-{
-	pf->i = 0;
-	pf->num_of_c = 0;
-}
-
-int			ft_printf(const char * restrict str, ...)
-{
-	t_pf	pf;
-
-	va_start(pf.argptr, str);
-	init_params(&pf);
-	while (str[pf.i])
-	{
-		if (str[pf.i] == '%')
-		{
-			parse_str(str, &pf);
-		}
-		else
-			pf.num_of_c += write(1, &str[pf.i++], 1);
-	}
-	va_end(pf.argptr);
-	return (pf.num_of_c);
 }

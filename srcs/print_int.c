@@ -54,6 +54,4 @@ void	print_inum(t_pf *pf)
 		print_sign(pf);
 		pf ->num_of_c += write(1, pf->out, pf->n_len);
 	}
-	free(pf->out);
-	//pf->i++;
 }

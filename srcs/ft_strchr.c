@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 19:20:25 by lbellona          #+#    #+#             */
-/*   Updated: 2019/06/28 14:21:03 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/06/30 00:01:00 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s - 1));
 	if (c == 0)
 		return ((char *)s);
-	return ((char *)NULL);
+	return ((char *)0);
 }

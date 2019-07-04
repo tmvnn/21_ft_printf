@@ -12,14 +12,17 @@
 
 #include "../includes/ft_printf.h"
 
-void		handle_int_prec(t_pf *pf)
+void			handle_int_prec(t_pf *pf)
 {
-	int		i;
-	char	*tmp;
-	char	*newstr;
+	int			i;
+	char		*tmp;
+	char		*newstr;
 
 	if (pf->out[0] == '0' && pf->prec == 0)
+	{
 		pf->out[0] = 0;
+		pf->n_len = 0;
+	}
 	else if (pf->prec > pf->n_len)
 	{
 		i = pf->prec - pf->n_len;
@@ -34,21 +37,31 @@ void		handle_int_prec(t_pf *pf)
 	}
 }
 
-void		s_int(t_pf *pf)
+void			s_int(t_pf *pf)
 {
-	int		num;
+	long long	num;
 
 	pf->flag.minus == 1 ? pf->flag.zero = 0 : 0;
-	num = va_arg(pf->argptr, int);
-	pf->out = ft_itoa(num);
+	num = va_arg(pf->argptr, long long);
+	if (pf->mod == no_mod)
+		pf->out = ft_iltoa((int)num);
+	else if (pf->mod == h_mod)
+		pf->out = ft_iltoa((short)num);
+	else if (pf->mod == hh_mod)
+		pf->out = ft_iltoa((char)num);
+	else if (pf->mod == l_mod || pf->mod == ll_mod ||
+				pf->mod == j_mod || pf->mod == t_mod)
+		pf->out = ft_iltoa((long)num); //TEST ll
 	get_sign_info(pf);
 	handle_int_prec(pf);
 	print_inum(pf);
+	free(pf->out);
+	pf->i++;
 }
 
-void	get_sign_info(t_pf *pf)
+void			get_sign_info(t_pf *pf)
 {
-	char *tmp;
+	char 		*tmp;
 
 	if (pf->out[0] == '-')
 	{

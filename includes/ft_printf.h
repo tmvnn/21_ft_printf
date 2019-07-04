@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # define BUFF_SIZE 3
-# define PF_FLAG "df"
+# define PF_FLAG " #*+-.0123456789Lhjltz"
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -22,6 +22,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <string.h>
 
 typedef struct		s_pf_flags
 {
@@ -35,6 +36,19 @@ typedef struct		s_pf_flags
 	int				fwidth;
 }				t_pf_flags;
 
+typedef enum		e_pf_mod
+{
+	no_mod = 0,
+	h_mod,
+	hh_mod,
+	l_mod,
+	ll_mod,
+	L_mod,
+	j_mod,
+	z_mod,
+	t_mod
+}					t_pf_mod;
+
 typedef struct		s_pf
 {
 	int				i;
@@ -45,6 +59,7 @@ typedef struct		s_pf
 	t_pf_flags		flag;
 	int				prec;
 	int				is_neg;
+	t_pf_mod		mod;
 }					t_pf;
 
 /*
@@ -55,18 +70,24 @@ int				ft_printf(const char * restrict format, ...);
 int				is_conversion(const char c);
 int				is_flag(const char c);
 int				is_precision(const char c);
+int				is_modifier(const char c);
 int				is_valid(const char c);
 void			init_flags(t_pf *pf);
 void			parse_str(const char *str, t_pf *pf);
-void			parse_flag(const char *str, t_pf *pf);
+void			parse_flag_mod_prec(const char *str, t_pf *pf);
+void			parse_mod(const char *str, t_pf *pf);
 void			parse_prec(const char *str, t_pf *pf);
 void			parse_spec(const char *str, t_pf *pf);
 void			s_percent(t_pf *pf);
 void			s_int(t_pf *pf);
+char			*ft_iltoa(long n);
 void 			get_sign_info(t_pf *pf);
+void			handle_int_prec(t_pf *pf);
 void			print_inum(t_pf *pf);
 void			print_width(t_pf *pf);
 void			print_sign(t_pf *pf);
+void			s_uint(t_pf *pf, char tp);
+char			*ft_ultoa(unsigned long n);
 
 /*
 ** ----------------------------- libft Functions -------------------------------
@@ -75,7 +96,6 @@ void			print_sign(t_pf *pf);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strnew(size_t size);
 void			*ft_memalloc(size_t size);
-char			*ft_itoa(int n);
 int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *str);
 char			*ft_strjoin(char const *s1, char const *s2);

@@ -12,7 +12,8 @@
 
 SOURCES = ft_printf.c\
 		ft_atoi.c\
-		ft_itoa.c\
+		ft_iltoa.c\
+		ft_ultoa.c\
 		ft_memalloc.c\
 		ft_memset.c\
 		ft_strchr.c\
@@ -22,6 +23,7 @@ SOURCES = ft_printf.c\
 		ft_strlen.c\
 		ft_strnew.c\
 		handle_int.c\
+		handle_uint.c\
 		parsers.c\
 		pf_check_funcs.c\
 		print_int.c
