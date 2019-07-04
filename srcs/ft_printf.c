@@ -45,12 +45,9 @@ int			ft_printf(const char * restrict str, ...)
 		else
 		{
 			pf.buff[pf.ib++] = str[pf.i++];
-			//pf.num_of_c += write(1, &str[pf.i++], 1);
 		}
 	}
-	//write(1, "\n", 1);
 	write(1, pf.buff, pf.ib);
 	va_end(pf.argptr);
 	return (pf.ib);
-	//return (pf.num_of_c);
 }
