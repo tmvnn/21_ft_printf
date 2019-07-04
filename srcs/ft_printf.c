@@ -26,6 +26,8 @@ void		init_params(t_pf *pf)
 {
 	pf->i = 0;
 	pf->num_of_c = 0;
+	pf->ib = 0;
+	pf->buff[pf->ib] = 0;
 }
 
 int			ft_printf(const char * restrict str, ...)
@@ -41,8 +43,14 @@ int			ft_printf(const char * restrict str, ...)
 			parse_str(str, &pf);
 		}
 		else
-			pf.num_of_c += write(1, &str[pf.i++], 1);
+		{
+			pf.buff[pf.ib++] = str[pf.i];
+			//pf.num_of_c += write(1, &str[pf.i++], 1);
+		}
 	}
+	//write(1, "\n", 1);
+	write(1, pf.buff, pf.ib);
 	va_end(pf.argptr);
-	return (pf.num_of_c);
+	return (pf.ib);
+	//return (pf.num_of_c);
 }

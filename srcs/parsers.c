@@ -16,15 +16,23 @@ void		s_percent(t_pf *pf)
 {
 	if (pf->flag.minus)
 	{
-		pf->num_of_c += write(1, "%", 1);
+		pf->buff[pf->ib++] = '%';
+		//pf->num_of_c += write(1, "%", 1);
 		while (pf->flag.fwidth-- > 1)
-			pf->num_of_c += write(1, " ", 1);
+		{
+			pf->buff[pf->ib++] = ' ';
+			//pf->num_of_c += write(1, " ", 1);
+		}
 	}
 	else
 	{
 		while (pf->flag.fwidth-- > 1)
-			pf->num_of_c += pf->flag.zero ? write(1, "0", 1) : write(1, " ", 1);
-		pf->num_of_c += write(1, "%", 1);
+		{
+			pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
+			//pf->num_of_c += pf->flag.zero ? write(1, "0", 1) : write(1, " ", 1);
+		}
+		pf->buff[pf->ib++] = '%';
+		//pf->num_of_c += write(1, "%", 1);
 	}
 	pf->i++;
 }

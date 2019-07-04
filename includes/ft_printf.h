@@ -13,7 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define BUFF_SIZE 3
+# define BUFF_SIZE 4096
 # define PF_FLAG " #*+-.0123456789Lhjltz"
 
 # include <unistd.h>
@@ -60,6 +60,8 @@ typedef struct		s_pf
 	int				prec;
 	int				is_neg;
 	t_pf_mod		mod;
+	int				ib;
+	char			buff[BUFF_SIZE + 1];
 }					t_pf;
 
 /*
