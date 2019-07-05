@@ -6,13 +6,13 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 16:00:04 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/02 22:28:45 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/05 22:44:14 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char			*ft_strmemal(unsigned long num, size_t *size_n)
+static char			*ft_strmemal(uintmax_t num, size_t *size_n)
 {
 	*size_n = 1;
 	if (num < 0)
@@ -22,10 +22,10 @@ static char			*ft_strmemal(unsigned long num, size_t *size_n)
 	return (ft_strnew(*size_n));
 }
 
-char				*ft_ultoa(unsigned long n)
+char				*ft_ultoa(uintmax_t n)
 {
 	size_t			size_n;
-	unsigned long	num;
+	uintmax_t	num;
 	char			*str;
 	char			*ret;
 

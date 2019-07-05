@@ -39,19 +39,24 @@ void			handle_int_prec(t_pf *pf)
 
 void			s_int(t_pf *pf)
 {
-	long long	num;
+	intmax_t	num;
 
 	pf->flag.minus == 1 ? pf->flag.zero = 0 : 0;
-	num = va_arg(pf->argptr, long long);
+	num = va_arg(pf->argptr, intmax_t);
 	if (pf->mod == no_mod)
 		pf->out = ft_iltoa((int)num);
 	else if (pf->mod == h_mod)
 		pf->out = ft_iltoa((short)num);
 	else if (pf->mod == hh_mod)
 		pf->out = ft_iltoa((char)num);
-	else if (pf->mod == l_mod || pf->mod == ll_mod ||
-				pf->mod == j_mod || pf->mod == t_mod)
-		pf->out = ft_iltoa((long)num); //TEST ll
+	else if (pf->mod == l_mod)
+		pf->out = ft_iltoa((long)num);
+	else if (pf->mod == ll_mod)
+		pf->out = ft_iltoa((long long)num);
+	else if (pf->mod == j_mod || pf->mod == t_mod)
+		pf->out = ft_iltoa((intmax_t)num);
+	else if (pf->mod == z_mod)
+		pf->out = ft_iltoa((size_t)num);
 	get_sign_info(pf);
 	handle_int_prec(pf);
 	print_inum(pf);

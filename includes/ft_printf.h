@@ -82,7 +82,7 @@ void			parse_prec(const char *str, t_pf *pf);
 void			parse_spec(const char *str, t_pf *pf);
 void			s_percent(t_pf *pf);
 void			s_int(t_pf *pf);
-char			*ft_iltoa(long n);
+char			*ft_iltoa(intmax_t n);
 void 			get_sign_info(t_pf *pf);
 void			handle_int_prec(t_pf *pf);
 void			put_num_2_buff(t_pf *pf);
@@ -90,7 +90,7 @@ void			print_inum(t_pf *pf);
 void			print_width(t_pf *pf);
 void			print_sign(t_pf *pf);
 void			s_uint(t_pf *pf, char tp);
-char			*ft_ultoa(unsigned long n);
+char			*ft_ultoa(uintmax_t n);
 
 /*
 ** ----------------------------- libft Functions -------------------------------

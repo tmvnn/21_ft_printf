@@ -33,9 +33,9 @@ void		parse_spec(const char *str, t_pf *pf)
 {
 	if (str[pf->i] == '%')
 		s_percent(pf);
-	else if (pf->mod != z_mod && (str[pf->i] == 'd' || str[pf->i] == 'i' || str[pf->i] == 'D'))
+	else if (str[pf->i] == 'd' || str[pf->i] == 'i' || str[pf->i] == 'D')
 		s_int(pf);
-	else if (pf->mod != z_mod && (str[pf->i] == 'u' || str[pf->i] == 'U'))
+	else if (str[pf->i] == 'u' || str[pf->i] == 'U')
 		s_uint(pf, str[pf->i]);
 }
 

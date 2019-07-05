@@ -6,13 +6,13 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 16:00:04 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/02 22:07:23 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/05 22:44:14 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char		*ft_strmemal(long num, size_t *size_n)
+static char		*ft_strmemal(intmax_t num, size_t *size_n)
 {
 	if (num == LONG_MIN)
 	{
@@ -27,10 +27,10 @@ static char		*ft_strmemal(long num, size_t *size_n)
 	return (ft_strnew(*size_n));
 }
 
-char			*ft_iltoa(long n)
+char			*ft_iltoa(intmax_t n)
 {
 	size_t		size_n;
-	long		num;
+	intmax_t	num;
 	char		*str;
 	char		*ret;
 
