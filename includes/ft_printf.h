@@ -83,6 +83,7 @@ void			parse_spec(const char *str, t_pf *pf);
 void			s_percent(t_pf *pf);
 void			s_int(t_pf *pf);
 char			*ft_iltoa(intmax_t n);
+char			*ft_iltoa_base(intmax_t n, int base);
 void 			get_sign_info(t_pf *pf);
 void			handle_int_prec(t_pf *pf);
 void			put_num_2_buff(t_pf *pf);
