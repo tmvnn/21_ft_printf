@@ -37,6 +37,9 @@ void		parse_spec(const char *str, t_pf *pf)
 		s_int(pf);
 	else if (str[pf->i] == 'u' || str[pf->i] == 'U')
 		s_uint(pf, str[pf->i]);
+	else if (str[pf->i] == 'o' || str[pf->i] == 'O'
+					|| str[pf->i] == 'x' || str[pf->i] == 'X')
+		s_uint_base(pf, str[pf->i]);
 }
 
 void		init_flags(t_pf *pf)
@@ -51,6 +54,7 @@ void		init_flags(t_pf *pf)
 	pf->flag.space = 0;
 	pf->flag.fwidth = 0;
 	pf->mod = no_mod;
+	pf->tp = 0;
 }
 
 void		parse_mod(const char *str, t_pf *pf)
@@ -101,6 +105,7 @@ void    	parse_flag_mod_prec(const char *str, t_pf *pf)
 		str[pf->i] == '-' ? pf->flag.minus = 1 : 0;
 		str[pf->i] == '+' ? pf->flag.plus = 1 : 0;
 		str[pf->i] == ' ' ? pf->flag.space = 1 : 0;
+		str[pf->i] == '#' ? pf->flag.hash = 1 : 0;
 		parse_mod(str, pf);
 		if (str[pf->i] == '.')
 			parse_prec(str, pf);

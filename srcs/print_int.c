@@ -20,12 +20,25 @@ void    print_sign(t_pf *pf)
 		pf->buff[pf->ib++] = '-';
 }
 
+
+void	print_hash(t_pf *pf)
+{
+	if (pf->out[0] == 0 && pf->n_len == 0)
+			return ;
+	pf->buff[pf->ib++] = '0';
+	pf->tp == 'x' ? pf->buff[pf->ib++] = 'x' : 0;
+	pf->tp == 'X' ? pf->buff[pf->ib++] = 'X' : 0;
+	pf->tp == 'x' || pf->tp == 'X' ? pf->flag.fwidth -= 2 : pf->flag.fwidth--;
+}
+
 void    print_width(t_pf *pf)
 {
 	int i;
 
 	i = -1;
 	(pf->flag.plus || pf->flag.space || pf->is_neg) ? pf->flag.fwidth-- : 0;
+	if (pf->flag.zero && pf->flag.hash)
+		print_hash(pf);
 	while (pf->flag.fwidth - pf->n_len > ++i)
 		pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
 }

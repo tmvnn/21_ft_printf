@@ -61,6 +61,7 @@ typedef struct		s_pf
 	int				is_neg;
 	t_pf_mod		mod;
 	int				ib;
+	char			tp;
 	char			buff[BUFF_SIZE + 1];
 }					t_pf;
 
@@ -83,7 +84,6 @@ void			parse_spec(const char *str, t_pf *pf);
 void			s_percent(t_pf *pf);
 void			s_int(t_pf *pf);
 char			*ft_iltoa(intmax_t n);
-char			*ft_iltoa_base(intmax_t n, int base);
 void 			get_sign_info(t_pf *pf);
 void			handle_int_prec(t_pf *pf);
 void			put_num_2_buff(t_pf *pf);
@@ -91,7 +91,9 @@ void			print_inum(t_pf *pf);
 void			print_width(t_pf *pf);
 void			print_sign(t_pf *pf);
 void			s_uint(t_pf *pf, char tp);
+void			s_uint_base(t_pf *pf, char tp);
 char			*ft_ultoa(uintmax_t n);
+char			*ft_ultoa_base(uintmax_t n, int base, char cap);
 
 /*
 ** ----------------------------- libft Functions -------------------------------

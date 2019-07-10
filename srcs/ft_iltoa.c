@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 16:00:04 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/05 22:44:14 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/09 18:11:46 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,8 @@ char			*ft_iltoa(intmax_t n)
 	}
 	while (size_n--)
 	{
-		if (num > 9)
-		{
-			str[size_n] = '0' + num % 10;
-			num /= 10;
-		}
-		else
-			str[size_n] = '0' + num;
+		str[size_n] = '0' + num % 10;
+		num /= 10;
 	}
 	return (ret);
 }

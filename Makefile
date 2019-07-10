@@ -13,6 +13,7 @@
 SOURCES = ft_printf.c\
 		ft_atoi.c\
 		ft_iltoa.c\
+		ft_ultoa_base.c\
 		ft_ultoa.c\
 		ft_memalloc.c\
 		ft_memset.c\

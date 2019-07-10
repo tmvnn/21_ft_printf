@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 16:00:04 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/05 22:44:14 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/09 15:46:06 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char				*ft_ultoa(uintmax_t n)
 	if (!(str = ft_strmemal(n, &size_n)))
 		return (NULL);
 	ret = str;
-	if ((num = n) < 0)
+	if ((num = n) < 0 && size_n > 0)
 	{
 		*str++ = '-';
 		num = -num;
