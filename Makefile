@@ -25,6 +25,7 @@ SOURCES = ft_printf.c\
 		ft_strnew.c\
 		handle_int.c\
 		handle_uint.c\
+		handle_char.c\
 		parsers.c\
 		pf_check_funcs.c\
 		print_int.c

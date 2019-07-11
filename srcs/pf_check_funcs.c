@@ -14,7 +14,7 @@
 
 int		is_conversion(const char c)
 {
-	return (ft_strchr("dDioOuUxX%", c) != 0);
+	return (ft_strchr("dDioOuUxXcCsS%", c) != 0);
 }
 
 int		is_flag(const char c)

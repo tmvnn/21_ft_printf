@@ -26,13 +26,11 @@
 
 typedef struct		s_pf_flags
 {
-	int				hash;//
-	int				zero;//
-	//int				neg;
-	int				minus;//
-	int				plus;//
-	int				space;//
-	//int				prec;
+	int				hash;
+	int				zero;
+	int				minus;
+	int				plus;
+	int				space;
 	int				fwidth;
 }				t_pf_flags;
 
@@ -94,6 +92,11 @@ void			s_uint(t_pf *pf, char tp);
 void			s_uint_base(t_pf *pf, char tp);
 char			*ft_ultoa(uintmax_t n);
 char			*ft_ultoa_base(uintmax_t n, int base, char cap);
+void			s_char(t_pf *pf, char tp);
+void			print_str(t_pf *pf, char *str);
+void			print_char(t_pf *pf, char c);
+void			print_str_width(t_pf *pf, int len);
+void			put_str_2_buff(t_pf *pf, char *str, int len);
 
 /*
 ** ----------------------------- libft Functions -------------------------------
