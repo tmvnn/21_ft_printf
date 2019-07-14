@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/10 14:22:59 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/14 17:20:22 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,16 @@ void		parse_spec(const char *str, t_pf *pf)
 	else if (str[pf->i] == 'o' || str[pf->i] == 'O'
 					|| str[pf->i] == 'x' || str[pf->i] == 'X')
 		s_uint_base(pf, str[pf->i]);
-	else if (str[pf->i] == 's' || str[pf->i] == 'c' ||
-				str[pf->i] == 'S' || str[pf->i] == 'C')
+	//else if (str[pf->i] == 's' || str[pf->i] == 'c' ||
+				//str[pf->i] == 'S' || str[pf->i] == 'C')
+	else if (str[pf->i] == 's' || str[pf->i] == 'c')
 		s_char(pf, str[pf->i]);
+	else if (str[pf->i] == 'p')
+	{
+		pf->mod = l_mod;
+		pf->flag.hash = 1;
+		s_uint_base(pf, str[pf->i]);
+	}
 }
 
 void		init_flags(t_pf *pf)

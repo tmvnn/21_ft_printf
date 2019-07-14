@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 21:14:06 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/11 22:37:06 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/14 17:53:40 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		main()
 	int d1=-123, d2=12, d3=2147483647;
 	int t = 28;
 
-	printf("\nnc = %d", printf("'%12.4s'\n", NULL)); //printf("%8%   %+.4d\n", d1, d2);
-	printf("\nnc = %d", ft_printf("'%12.4s'\n", NULL));
+	printf("\nnc = %d", printf("%#.5o", 1)); //printf("%8%   %+.4d\n", d1, d2);
+	printf("\nnc = %d", ft_printf("%#.5x", 1));
 
 	return (0);
 }

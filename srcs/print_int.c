@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/10 14:04:44 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/14 17:26:16 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	print_hash(t_pf *pf)
 	if (pf->out[0] == 0 && pf->n_len == 0)
 			return ;
 	pf->buff[pf->ib++] = '0';
-	pf->tp == 'x' ? pf->buff[pf->ib++] = 'x' : 0;
+	pf->tp == 'x' || pf->tp == 'p' ? pf->buff[pf->ib++] = 'x' : 0;
 	pf->tp == 'X' ? pf->buff[pf->ib++] = 'X' : 0;
-	pf->tp == 'x' || pf->tp == 'X' ? pf->flag.fwidth -= 2 : pf->flag.fwidth--;
+	pf->tp == 'x' || pf->tp == 'X' || pf->tp == 'p' ? pf->flag.fwidth -= 2 : pf->flag.fwidth--;
 }
 
 void    print_width(t_pf *pf)
