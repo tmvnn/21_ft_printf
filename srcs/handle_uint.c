@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/14 17:43:26 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/15 16:25:25 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			handle_hash(t_pf *pf, char tp)
 {
 	char		*tmp;
 
-	pf->tp = tp;
+	//pf->tp = tp;
 	if (pf->flag.hash && !pf->flag.zero)
 	{
 		if ((pf->out[0] == 0 && pf->n_len == 0 && tp != 'o' && tp != 'O' && tp != 'p') ||
@@ -77,6 +77,8 @@ void			s_uint_base(t_pf *pf, char tp)
 	pf->flag.plus = 0;
 	pf->flag.space = 0;
 	pf->flag.minus == 1 ? pf->flag.zero = 0 : 0;
+	pf->tp = tp;
+	(pf->tp == 'o' || pf->tp == 'O') && pf->flag.hash ? pf->prec-- : 0;
 	num = va_arg(pf->argptr, intmax_t);
 	if (pf->mod == no_mod)
 		num = (unsigned int)num;
@@ -92,11 +94,9 @@ void			s_uint_base(t_pf *pf, char tp)
 		num = (uintmax_t)num;
 	else if (pf->mod == z_mod)
 		num = (size_t)num;
-	//printf("num = %ji\n", num);
 	(tp == 'o' || tp == 'O') ? pf->out = ft_ultoa_base(num, 8, tp - 14) : 0;
 	(tp == 'x' || tp == 'X') ? pf->out = ft_ultoa_base(num, 16, tp - 23) : 0;
 	(tp == 'p') ? pf->out = ft_ultoa_base(num, 16, 'a') : 0;
-	//printf("out = %s\n", pf->out);
 	get_sign_info(pf);
 	handle_int_prec(pf);
 	handle_hash(pf, tp);
