@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/15 16:25:25 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/15 16:31:48 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void			handle_hash(t_pf *pf, char tp)
 {
 	char		*tmp;
 
-	//pf->tp = tp;
 	if (pf->flag.hash && !pf->flag.zero)
 	{
 		if ((pf->out[0] == 0 && pf->n_len == 0 && tp != 'o' && tp != 'O' && tp != 'p') ||

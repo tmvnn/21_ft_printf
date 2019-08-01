@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/10 14:04:20 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/07/23 18:20:56 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,11 @@ int			ft_printf(const char * restrict str, ...)
 	while (str[pf.i])
 	{
 		if (str[pf.i] == '%')
-		{
 			parse_str(str, &pf);
-		}
 		else
-		{
 			pf.buff[pf.ib++] = str[pf.i++];
-		}
 	}
-	write(1, pf.buff, pf.ib);
+	pf.ib = write(1, pf.buff, pf.ib);
 	va_end(pf.argptr);
 	return (pf.ib);
 }

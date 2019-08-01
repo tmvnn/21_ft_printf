@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/15 15:48:30 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/01 20:45:33 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void		init_flags(t_pf *pf)
 
 void		parse_mod(const char *str, t_pf *pf)
 {
-	if (str[pf->i] == 'h' && str[pf->i + 1] != 'h')
+	if (str[pf->i] == 'h' && str[pf->i + 1] != 'h' && pf->mod == no_mod)
 		pf->mod = h_mod;
-	else if (str[pf->i] == 'h' && str[pf->i + 1] == 'h')
+	else if (str[pf->i] == 'h' && str[pf->i + 1] == 'h' && pf->mod == no_mod)
 	{
 		pf->i++;
 		pf->mod = hh_mod;
@@ -110,13 +110,14 @@ void    	parse_flag_mod_prec(const char *str, t_pf *pf)
 						|| is_modifier(str[pf->i])))
 	//while (str[pf->i] && ft_strchr(PF_FLAG, str[pf->i]))
 	{
+		//Можно ускорить переписав через else if
 		str[pf->i] == '#' ? pf->flag.hash = 1 : 0;
 		str[pf->i] == '0' ? pf->flag.zero = 1 : 0;
 		str[pf->i] == '-' ? pf->flag.minus = 1 : 0;
 		str[pf->i] == '+' ? pf->flag.plus = 1 : 0;
 		str[pf->i] == ' ' ? pf->flag.space = 1 : 0;
 		str[pf->i] == '#' ? pf->flag.hash = 1 : 0;
-		parse_mod(str, pf);
+		str[pf->i] >= 'L' && str[pf->i] <= 'z' ? parse_mod(str, pf) : 0;
 		if (str[pf->i] == '.')
 			parse_prec(str, pf);
 		else if (str[pf->i] >= '1' && str[pf->i] <= '9')

@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/11 22:40:41 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/01 20:14:17 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void			print_str_width(t_pf *pf, int len)
 {
 	while (pf->flag.fwidth-- > len)
-		pf->buff[pf->ib++] = ' ';
+		pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
+
 }
 
 void			print_char(t_pf *pf, char c)
