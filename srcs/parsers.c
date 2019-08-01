@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/01 20:45:33 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/01 21:30:54 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void    	parse_flag_mod_prec(const char *str, t_pf *pf)
 		str[pf->i] == '+' ? pf->flag.plus = 1 : 0;
 		str[pf->i] == ' ' ? pf->flag.space = 1 : 0;
 		str[pf->i] == '#' ? pf->flag.hash = 1 : 0;
-		str[pf->i] >= 'L' && str[pf->i] <= 'z' ? parse_mod(str, pf) : 0;
+		parse_mod(str, pf);
 		if (str[pf->i] == '.')
 			parse_prec(str, pf);
 		else if (str[pf->i] >= '1' && str[pf->i] <= '9')
