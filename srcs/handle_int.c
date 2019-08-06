@@ -33,7 +33,7 @@ void			handle_int_prec(t_pf *pf)
 		free(pf->out);
 		pf->out = newstr;
 		pf->n_len += i;
-		pf->flag.zero = 0;//
+		pf->flag.zero = 0;
 	}
 }
 
