@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/06 11:45:08 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/06 13:40:08 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			handle_int_prec(t_pf *pf)
 		free(pf->out);
 		pf->out = newstr;
 		pf->n_len += i;
-		pf->flag.zero = 0;//
+		pf->flag.zero = 0;
 	}
 }
 
