@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/23 18:20:56 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/06 12:49:02 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		parse_str(const char *str, t_pf *pf)
 {
 	pf->i++;
-	if (str[pf->i] && is_valid(str[pf->i])) //!
+	if (str[pf->i] && is_valid(str[pf->i]))
 	{
 		parse_flag_mod_prec(str, pf);
 		parse_spec(str, pf);

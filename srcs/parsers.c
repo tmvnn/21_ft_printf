@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/01 21:30:54 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/06 12:48:00 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ void		parse_prec(const char *str, t_pf *pf)
 {
 	pf->i++;
 	if (pf->prec >= 0)
+	{
+		pf->i++;
 		return ;
+	}
 	pf->prec = ft_atoi(str + pf->i);
 	while (str[pf->i] >= '0' && str[pf->i] <= '9')
 		pf->i++;
@@ -120,7 +123,7 @@ void    	parse_flag_mod_prec(const char *str, t_pf *pf)
 		parse_mod(str, pf);
 		if (str[pf->i] == '.')
 			parse_prec(str, pf);
-		else if (str[pf->i] >= '1' && str[pf->i] <= '9')
+		else if (str[pf->i] >= '1' && str[pf->i] <= '9' && pf->prec < 0)
 		{
 			pf->flag.fwidth = ft_atoi(str + pf->i);
 			while (str[pf->i] >= '0' && str[pf->i] <= '9')

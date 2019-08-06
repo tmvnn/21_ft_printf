@@ -6,7 +6,7 @@
 /*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/07/14 17:26:16 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/08/06 12:48:00 by timuryakubo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,15 @@ void	print_hash(t_pf *pf)
 {
 	if (pf->out[0] == 0 && pf->n_len == 0)
 			return ;
-	pf->buff[pf->ib++] = '0';
+	if (pf->tp == 'x' || pf->tp == 'X' || pf->tp == 'o' ||
+							pf->tp == 'O' || pf->tp == 'p')
+	{
+		pf->buff[pf->ib++] = '0';
+		pf->flag.fwidth--;
+	}
 	pf->tp == 'x' || pf->tp == 'p' ? pf->buff[pf->ib++] = 'x' : 0;
 	pf->tp == 'X' ? pf->buff[pf->ib++] = 'X' : 0;
-	pf->tp == 'x' || pf->tp == 'X' || pf->tp == 'p' ? pf->flag.fwidth -= 2 : pf->flag.fwidth--;
+	pf->tp == 'x' || pf->tp == 'X' || pf->tp == 'p' ? pf->flag.fwidth-- : 0;
 }
 
 void    print_width(t_pf *pf)
@@ -39,8 +44,12 @@ void    print_width(t_pf *pf)
 	(pf->flag.plus || pf->flag.space || pf->is_neg) ? pf->flag.fwidth-- : 0;
 	if (pf->flag.zero && pf->flag.hash)
 		print_hash(pf);
-	while (pf->flag.fwidth - pf->n_len > ++i)
-		pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
+	if (pf->prec >= 0)
+		while (pf->flag.fwidth - pf->n_len > ++i)
+			pf->buff[pf->ib++] = ' ';
+	else
+		while (pf->flag.fwidth - pf->n_len > ++i)
+			pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
 }
 
 void	put_num_2_buff(t_pf *pf)
