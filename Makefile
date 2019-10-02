@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbellona <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/24 16:32:39 by lbellona          #+#    #+#              #
-#    Updated: 2019/01/23 20:56:54 by lbellona         ###   ########.fr        #
+#    Updated: 2019/10/02 21:31:42 by lbellona         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SOURCES = ft_printf.c\
 		handle_uint.c\
 		handle_char.c\
 		parsers.c\
+		parsers2.c\
 		pf_check_funcs.c\
 		print_int.c
 
@@ -44,8 +45,8 @@ OBJS 		= $(addprefix $(OBJDIR)/, $(OFILES))
 all: $(NAME)
 
 $(OBJDIR)/%.o: $(SRCSDIR)/%.c
-	@/bin/mkdir -p $(OBJDIR)
-	@gcc -c $(WWW) $(INCLUDES) $< -o $@
+	/bin/mkdir -p $(OBJDIR)
+	gcc -c $(WWW) $(INCLUDES) $< -o $@
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)

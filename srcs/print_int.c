@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
+/*   By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/06 13:40:31 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/10/02 22:53:13 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
-void    print_sign(t_pf *pf)
+void	print_sign(t_pf *pf)
 {
 	if (pf->flag.plus || pf->flag.space)
 		pf->buff[pf->ib++] = pf->flag.plus ? '+' : ' ';
@@ -20,11 +20,10 @@ void    print_sign(t_pf *pf)
 		pf->buff[pf->ib++] = '-';
 }
 
-
 void	print_hash(t_pf *pf)
 {
 	if (pf->out[0] == 0 && pf->n_len == 0)
-			return ;
+		return ;
 	if (pf->tp == 'x' || pf->tp == 'X' || pf->tp == 'o' ||
 							pf->tp == 'O' || pf->tp == 'p')
 	{
@@ -36,9 +35,9 @@ void	print_hash(t_pf *pf)
 	pf->tp == 'x' || pf->tp == 'X' || pf->tp == 'p' ? pf->flag.fwidth-- : 0;
 }
 
-void    print_width(t_pf *pf)
+void	print_width(t_pf *pf)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	(pf->flag.plus || pf->flag.space || pf->is_neg) ? pf->flag.fwidth-- : 0;
@@ -54,7 +53,7 @@ void    print_width(t_pf *pf)
 
 void	put_num_2_buff(t_pf *pf)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (pf->out[++i])
@@ -69,7 +68,7 @@ void	print_inum(t_pf *pf)
 		print_width(pf);
 		put_num_2_buff(pf);
 	}
-	else if(pf->flag.minus)
+	else if (pf->flag.minus)
 	{
 		print_sign(pf);
 		put_num_2_buff(pf);

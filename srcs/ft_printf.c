@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
+/*   By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/06 12:49:02 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/10/02 22:53:13 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void		parse_str(const char *str, t_pf *pf)
 {
@@ -30,7 +30,7 @@ void		init_params(t_pf *pf)
 	pf->buff[pf->ib] = 0;
 }
 
-int			ft_printf(const char * restrict str, ...)
+int			ft_printf(const char *str, ...)
 {
 	t_pf	pf;
 

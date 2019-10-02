@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
+/*   By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/06 13:40:08 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/10/02 22:53:13 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void			handle_int_prec(t_pf *pf)
 {
@@ -66,7 +66,7 @@ void			s_int(t_pf *pf)
 
 void			get_sign_info(t_pf *pf)
 {
-	char 		*tmp;
+	char		*tmp;
 
 	if (pf->out[0] == '-')
 	{

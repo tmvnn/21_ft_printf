@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   handle_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
+/*   By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/01 20:14:17 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/10/02 22:53:13 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void			print_str_width(t_pf *pf, int len)
 {
 	while (pf->flag.fwidth-- > len)
 		pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
-
 }
 
 void			print_char(t_pf *pf, char c)
@@ -41,7 +40,7 @@ void			put_str_2_buff(t_pf *pf, char *str, int len)
 
 void			print_str(t_pf *pf, char *str)
 {
-	int 		len;
+	int			len;
 
 	len = ft_strlen(str);
 	(pf->prec >= 0 && pf->prec < len) ? len = pf->prec : 0;

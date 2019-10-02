@@ -3,54 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timuryakubov <timuryakubov@student.42.f    +#+  +:+       +#+        */
+/*   By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/08/06 12:48:00 by timuryakubo      ###   ########.fr       */
+/*   Updated: 2019/10/02 22:53:13 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-
-void		s_percent(t_pf *pf)
-{
-	if (pf->flag.minus)
-	{
-		pf->buff[pf->ib++] = '%';
-		while (pf->flag.fwidth-- > 1)
-			pf->buff[pf->ib++] = ' ';
-	}
-	else
-	{
-		while (pf->flag.fwidth-- > 1)
-			pf->buff[pf->ib++] = pf->flag.zero ? '0' : ' ';
-		pf->buff[pf->ib++] = '%';
-	}
-	pf->i++;
-}
-
-void		parse_spec(const char *str, t_pf *pf)
-{
-	if (str[pf->i] == '%')
-		s_percent(pf);
-	else if (str[pf->i] == 'd' || str[pf->i] == 'i' || str[pf->i] == 'D')
-		s_int(pf);
-	else if (str[pf->i] == 'u' || str[pf->i] == 'U')
-		s_uint(pf, str[pf->i]);
-	else if (str[pf->i] == 'o' || str[pf->i] == 'O'
-					|| str[pf->i] == 'x' || str[pf->i] == 'X')
-		s_uint_base(pf, str[pf->i]);
-	//else if (str[pf->i] == 's' || str[pf->i] == 'c' ||
-				//str[pf->i] == 'S' || str[pf->i] == 'C')
-	else if (str[pf->i] == 's' || str[pf->i] == 'c')
-		s_char(pf, str[pf->i]);
-	else if (str[pf->i] == 'p')
-	{
-		pf->mod = l_mod;
-		pf->flag.hash = 1;
-		s_uint_base(pf, str[pf->i]);
-	}
-}
+#include "ft_printf.h"
 
 void		init_flags(t_pf *pf)
 {
@@ -106,14 +66,12 @@ void		parse_prec(const char *str, t_pf *pf)
 		pf->i++;
 }
 
-void    	parse_flag_mod_prec(const char *str, t_pf *pf)
+void		parse_flag_mod_prec(const char *str, t_pf *pf)
 {
 	init_flags(pf);
 	while (str[pf->i] && (is_flag(str[pf->i]) || is_precision(str[pf->i])
 						|| is_modifier(str[pf->i])))
-	//while (str[pf->i] && ft_strchr(PF_FLAG, str[pf->i]))
 	{
-		//Можно ускорить переписав через else if
 		str[pf->i] == '#' ? pf->flag.hash = 1 : 0;
 		str[pf->i] == '0' ? pf->flag.zero = 1 : 0;
 		str[pf->i] == '-' ? pf->flag.minus = 1 : 0;
