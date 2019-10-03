@@ -18,6 +18,7 @@ void			handle_int_prec(t_pf *pf)
 	char		*tmp;
 	char		*newstr;
 
+	pf->prec >= 0 ? pf->flag.zero = 0 : 0;
 	if (pf->out[0] == '0' && pf->prec == 0)
 	{
 		pf->out[0] = 0;
