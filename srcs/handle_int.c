@@ -6,7 +6,7 @@
 /*   By: lbellona <lbellona@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:28:01 by lbellona          #+#    #+#             */
-/*   Updated: 2019/10/02 22:53:13 by lbellona         ###   ########.fr       */
+/*   Updated: 2019/10/06 23:57:52 by lbellona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void			handle_int_prec(t_pf *pf)
 	char		*newstr;
 
 	pf->prec >= 0 ? pf->flag.zero = 0 : 0;
+	pf->out[0] == '0' && (pf->tp == 'x' || pf->tp == 'X')
+												? pf->flag.hash = 0 : 0;
 	if (pf->out[0] == '0' && pf->prec == 0)
 	{
 		pf->out[0] = 0;
